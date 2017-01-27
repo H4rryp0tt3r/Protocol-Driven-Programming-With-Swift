@@ -36,6 +36,16 @@ struct SwiftBird: Bird, Flyable {
     }
 }
 
+let parrot = FlappyBird(name: "Parrot", flappyAmplitude: 10, flappyFrequency: 8)
+parrot.canFly
+
+let penguin = Penguin(name: "Kowalski")
+penguin.canFly
+
+let swiftBird = SwiftBird(version: 10)
+swiftBird.canFly
+
+
 enum UnladenSwallow: Bird, Flyable {
     case african
     case european
