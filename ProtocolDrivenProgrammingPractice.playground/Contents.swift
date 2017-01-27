@@ -155,3 +155,13 @@ func genericTopSpeed<RacerType: Sequence>(of racers: RacerType) -> Double where 
 
 genericTopSpeed(of: racers)
 genericTopSpeed(of: racers[1...3])
+
+
+extension Sequence where Iterator.Element == Racer {
+    func topSpeed() -> Double {
+        return self.max(by: { $0.speed < $1.speed })?.speed ?? 0
+    }
+}
+
+racers.topSpeed()
+racers[1...3].topSpeed()
