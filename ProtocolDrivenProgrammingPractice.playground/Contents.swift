@@ -1,4 +1,4 @@
-protocol Bird {
+protocol Bird: CustomStringConvertible {
     var name: String { get }
     var canFly: Bool { get }
 }
@@ -6,6 +6,12 @@ protocol Bird {
 extension Bird {
     var canFly: Bool {
         return self is Flyable
+    }
+}
+
+extension CustomStringConvertible where Self: Bird {
+    var description: String {
+        return canFly ? "I can fly" : "Guess I'll just sit here :["
     }
 }
 
@@ -83,3 +89,9 @@ extension UnladenSwallow {
 UnladenSwallow.african.canFly
 UnladenSwallow.european.canFly
 UnladenSwallow.unknown.canFly
+
+
+String(describing: swiftBird)
+String(describing: penguin)
+String(describing: UnladenSwallow.african)
+String(describing: UnladenSwallow.unknown)
