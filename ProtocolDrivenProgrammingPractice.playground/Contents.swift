@@ -95,3 +95,47 @@ String(describing: swiftBird)
 String(describing: penguin)
 String(describing: UnladenSwallow.african)
 String(describing: UnladenSwallow.unknown)
+
+
+class MotorCycle {
+    var name: String
+    var speed: Double
+
+    init(name: String) {
+        self.name = name
+        speed = 200
+    }
+}
+
+protocol Racer {
+    var speed: Double { get } //Racing is all about speed
+}
+
+extension MotorCycle: Racer {
+}
+
+extension FlappyBird: Racer {
+    var speed: Double {
+        return airSpeedVelocity
+    }
+}
+
+extension SwiftBird: Racer {
+    var speed: Double {
+        return airSpeedVelocity
+    }
+}
+
+extension Penguin: Racer {
+    var speed: Double {
+        return 40
+    }
+}
+
+extension UnladenSwallow: Racer {
+    var speed: Double {
+        return canFly ? airSpeedVelocity : 0
+    }
+}
+
+let racers: [Racer] = [UnladenSwallow.african, UnladenSwallow.unknown, UnladenSwallow.european, Penguin(name: "Rico"), SwiftBird(version: 3.0), FlappyBird(name: "Private", flappyAmplitude: 10, flappyFrequency: 8), MotorCycle(name: "Bajaj Dominor 400")]
