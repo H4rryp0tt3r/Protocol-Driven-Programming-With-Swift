@@ -63,3 +63,13 @@ enum UnladenSwallow: Bird, Flyable {
         }
     }
 }
+
+extension UnladenSwallow {
+    var canFly: Bool {
+        return self != .unknown
+    }
+}
+
+UnladenSwallow.african.canFly
+UnladenSwallow.european.canFly
+UnladenSwallow.unknown.canFly
