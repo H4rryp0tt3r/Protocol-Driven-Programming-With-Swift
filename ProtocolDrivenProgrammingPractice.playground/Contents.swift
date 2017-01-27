@@ -139,3 +139,19 @@ extension UnladenSwallow: Racer {
 }
 
 let racers: [Racer] = [UnladenSwallow.african, UnladenSwallow.unknown, UnladenSwallow.european, Penguin(name: "Rico"), SwiftBird(version: 3.0), FlappyBird(name: "Private", flappyAmplitude: 10, flappyFrequency: 8), MotorCycle(name: "Bajaj Dominor 400")]
+
+func topSpeed(of racers: [Racer]) -> Double {
+    return racers.max(by: { $0.speed < $1.speed })?.speed ?? 0
+}
+
+topSpeed(of: racers)
+
+// Our topSpeed function will not work for Sliced array of racers eg: topSpeed(of: racers[0...3]) gives an error
+// We can make it more generic by using protocols
+
+func genericTopSpeed<RacerType: Sequence>(of racers: RacerType) -> Double where RacerType.Iterator.Element == Racer {
+    return racers.max(by: { $0.speed < $1.speed })?.speed ?? 0
+}
+
+genericTopSpeed(of: racers)
+genericTopSpeed(of: racers[1...3])
